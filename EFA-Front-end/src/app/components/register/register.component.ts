@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {AbstractControl, FormBuilder,FormGroup,Validators,} from '@angular/forms';
+import { SelectItem } from 'primeng/api';
 import { DropdownModule } from 'primeng/dropdown';
 
 
@@ -16,15 +17,15 @@ export class RegisterComponent {
     this.registrationForm = this.formBuilder.group({
       nom: ['', [Validators.required, Validators.pattern(/^[a-zA-Z]+$/)]],
       prenom: ['', [Validators.required, Validators.pattern(/^[a-zA-Z]+$/)]],
-      role:['',[Validators.required]],
+      role: ['', Validators.required],
       email: ['', [Validators.required, Validators.email]],
-      password: ['', [Validators.required]]
+      password: ['', Validators.required]
     });
   }
 
 
 
-  
+
 
   onSubmit() {
     this.c = true;
