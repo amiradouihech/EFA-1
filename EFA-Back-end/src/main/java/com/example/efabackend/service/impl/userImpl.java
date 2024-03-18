@@ -25,7 +25,6 @@ public class userImpl implements userService {
     @Override
     public RegisterResponse addUser(RegisterDto registerDto) {
         User existingUser = userRepo.findByEmail(registerDto.getEmail());
-
         if (existingUser != null) {
             return new RegisterResponse("User with email " + registerDto.getEmail() + " already exists",false);
         }
@@ -44,15 +43,13 @@ public class userImpl implements userService {
     @Override
     public LoginResponse loginUser(LoginDto loginDto) {
         User user = userRepo.findByEmail(loginDto.getEmail());
-     if (user != null) {
+
+        if (user != null) {
             String password = loginDto.getPassword();
-            String encodedPassword = user.getPassword();if (passwordEncoder.matches(password, encodedPassword)) {
-               Optional<User> employee = userRepo.findOneByEmailAndPassword(loginDto.getEmail(), encodedPassword);
-                if (employee.isPresent()) {
-                    return new LoginResponse("Login Success", true);
-                } else {
-                    return new LoginResponse("Login Failed", false);
-                }
+            String encodedPassword = user.getPassword();
+
+            if (passwordEncoder.matches(password, encodedPassword)) {
+                return new LoginResponse("Login Success", true);
             } else {
                 return new LoginResponse("Password Not Match", false);
             }
@@ -60,5 +57,9 @@ public class userImpl implements userService {
             return new LoginResponse("Email Not Exists", false);
         }
     }
+
+
+
+
 
 }
