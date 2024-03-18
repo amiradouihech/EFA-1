@@ -21,20 +21,24 @@ public class User {
     private String role;
     private LocalDate Dob;
     private String email;
+    private String Password;
 
-    public User(long id, String name, String role, LocalDate dob, String email) {
+
+    public User(long id, String name, String role, LocalDate dob, String email, String password) {
         this.id = id;
         this.name = name;
         this.role = role;
         Dob = dob;
         this.email = email;
+        Password = password;
     }
 
-    public User(String name, String role, LocalDate dob, String email) {
+    public User(String name, String role, LocalDate dob, String email, String password) {
         this.name = name;
         this.role = role;
         Dob = dob;
         this.email = email;
+        Password = password;
     }
 
     public User() {
@@ -80,4 +84,13 @@ public class User {
     public void setEmail(String email) {
         this.email = email;
     }
+
+    public String getPassword() {
+        return Password;
+    }
+
+    public void setPassword(String password) {
+        Password = password;
+    }
 }
+
