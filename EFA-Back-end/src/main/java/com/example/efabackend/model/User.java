@@ -21,7 +21,11 @@ public class User {
     private String role;
     private LocalDate Dob;
     private String email;
+<<<<<<< HEAD
     private String Password;
+=======
+    private  String password;
+>>>>>>> 65d17af56a3b79fa1fd431e0fdea078d96e5d355
 
 
     public User(long id, String name, String role, LocalDate dob, String email, String password) {
@@ -86,11 +90,19 @@ public class User {
     }
 
     public String getPassword() {
+<<<<<<< HEAD
         return Password;
     }
 
     public void setPassword(String password) {
         Password = password;
+=======
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+>>>>>>> 65d17af56a3b79fa1fd431e0fdea078d96e5d355
     }
 }
 
