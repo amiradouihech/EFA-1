@@ -1,8 +1,13 @@
 package com.example.efabackend.userController;
 
-import com.example.efabackend.Dto.userDto;
+import com.example.efabackend.Dto.LoginDto;
+import com.example.efabackend.Dto.RegisterDto;
+import com.example.efabackend.entity.User;
+import com.example.efabackend.response.LoginResponse;
+import com.example.efabackend.response.RegisterResponse;
 import com.example.efabackend.service.userService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
@@ -12,8 +17,14 @@ public class userController {
     @Autowired
     private userService userservice;
     @PostMapping(path = "/register")
-    public String register(@RequestBody userDto UserDTO){
-        String id =userservice.addUser(UserDTO);
-        return id;
+    public RegisterResponse register(@RequestBody RegisterDto registerDTO){
+        RegisterResponse RegisterResponse =userservice.addUser(registerDTO);
+        return RegisterResponse;
+    }
+
+    @PostMapping(path = "/login")
+    public ResponseEntity <?> login(LoginDto loginDto){
+        LoginResponse loginMessage =userservice.loginUser(loginDto);
+        return ResponseEntity.ok(loginMessage);
     }
 }

@@ -1,12 +1,12 @@
 package com.example.efabackend.Dto;
-public class userDto {
+public class RegisterDto {
     private long id;
     private String email;
-    private String password;
+        private String password;
     private String name;
     private String role;
 
-    public userDto(long id, String email, String password, String name, String role) {
+    public RegisterDto(long id, String email, String password, String name, String role) {
         this.id = id;
         this.email = email;
         this.password = password;
@@ -14,7 +14,7 @@ public class userDto {
         this.role = role;
     }
 
-    public userDto() {
+    public RegisterDto() {
     }
 
     public long getId() {
