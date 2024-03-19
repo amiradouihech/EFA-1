@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { NgToastService } from 'ng-angular-popup';
 import { LoginService } from 'src/app/services/login.service';
 
 @Component({
@@ -12,7 +13,7 @@ export class LoginComponent {
   c = false;
   loginError = '';
 
-  constructor(private formBuilder: FormBuilder, private loginService: LoginService) {
+  constructor(private formBuilder: FormBuilder, private loginService: LoginService,private toast: NgToastService) {
     this.loginForm = this.formBuilder.group({
       email: ['', [Validators.required, Validators.email]],
       password: ['', [Validators.required]],
@@ -25,9 +26,11 @@ export class LoginComponent {
       this.loginService.login(this.loginForm.value).subscribe(
         (rep: any) => {
           if (rep.status) {
+            this.toast.success({detail:"SUCCÈS",summary:'Vous êtes connecté',duration:5000})
             console.log("logged in successfully");
+
           } else {
-            this.loginError = "email or password is invalid";
+            this.toast.error({detail:"ERROR",summary:"Mot de passe ou email incorrect"});
           }
         },
         (error) => {
