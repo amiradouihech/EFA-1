@@ -10,55 +10,38 @@
 <body class="d-flex align-items-center justify-content-center vh-100">
   <div class="card p-4" style="width: 50%;">
     <form class="needs-validation custf" novalidate [formGroup]="registrationForm" (ngSubmit)="onSubmit()">
-      <div class="row">
-        <div class="col-md-6 mb-3">
-          <label for="nom" class="form-label">Nom:</label>
-          <input type="text" id="nom" class="form-control" formControlName="nom" required />
-          <div *ngIf="registrationForm.get('nom').errors?.['required'] && c" class="text-danger">
-            Le champs nom est requis
-          </div>
-          <div *ngIf="registrationForm.get('nom').errors?.['pattern'] && c " class="text-danger">
-            Le champ nom ne doit pas contenir des chiffres ni des caractères spéciaux.
-          </div>
+      <div class="mb-3">
+        <label for="name" class="form-label">Name:</label>
+        <input type="text" id="name" class="form-control" formControlName="name" required />
+        <div *ngIf="registrationForm.get('name').errors?.['required'] && c" class="text-danger">
+          Le champ nom est requis
         </div>
-
-        <div class="col-md-6 mb-3">
-          <label for="prenom" class="form-label">Prenom:</label>
-          <input type="text" id="prenom" class="form-control" formControlName="prenom" required />
-          <div *ngIf="registrationForm.get('prenom').errors?.['required'] && c" class="text-danger">
-            Le champs prenom est requis
-          </div>
-          <div *ngIf="registrationForm.get('prenom').errors?.['pattern'] && c" class="text-danger">
-            Le champ prenom ne doit pas contenir des chiffres ni des caractères spéciaux.
-          </div>
+        <div *ngIf="registrationForm.get('name').errors?.['pattern'] && c" class="text-danger">
+          Le champ nom ne doit pas contenir des chiffres ni des caractères spéciaux.
         </div>
       </div>
 
-      <div class="row">
-        <div class="col-md-6 mb-3">
-          <label for="cin" class="form-label" formControlName="role">Role:</label>
-          <select class="form-select" aria-label="Default select example" formControlName="role">
-            <option selected disabled>---------</option>
-            <option value="1">Student</option>
-            <option value="2">Intern</option>
-            <option value="3">Teacher</option>
-          </select>
-          <div *ngIf="registrationForm.get('role').errors?.['required'] && c" class="text-danger">
-            Role doit être sélectionné.
-          </div>
-
-
+      <div class="mb-3">
+        <label for="role" class="form-label">Role:</label>
+        <select class="form-select" aria-label="Default select example" formControlName="role">
+          <option selected disabled>---------</option>
+          <option value="Student">Student</option>
+          <option value="Intern">Intern</option>
+          <option value="Teacher">Teacher</option>
+        </select>
+        <div *ngIf="registrationForm.get('role').errors?.['required'] && c" class="text-danger">
+          Role doit être sélectionné.
         </div>
+      </div>
 
-        <div class="col-md-6 mb-3">
-          <label for="email" class="form-label">Email:</label>
-          <input type="email" id="email" class="form-control" formControlName="email" required />
-          <div *ngIf="registrationForm.get('email').errors?.['email'] && c" class="text-danger">
-            Email doit etre valide.
-          </div>
-          <div *ngIf="registrationForm.get('email').errors?.['required'] && c" class="text-danger">
-            Le champ Email est requis.
-          </div>
+      <div class="mb-3">
+        <label for="email" class="form-label">Email:</label>
+        <input type="email" id="email" class="form-control" formControlName="email" required />
+        <div *ngIf="registrationForm.get('email').errors?.['email'] && c" class="text-danger">
+          Email doit etre valide.
+        </div>
+        <div *ngIf="registrationForm.get('email').errors?.['required'] && c" class="text-danger">
+          Le champ Email est requis.
         </div>
       </div>
 

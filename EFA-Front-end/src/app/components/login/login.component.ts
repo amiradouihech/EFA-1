@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { DropdownModule } from 'primeng/dropdown';
+import { LoginService } from 'src/app/services/login.service';
 
 @Component({
   selector: 'app-login',
@@ -10,8 +10,9 @@ import { DropdownModule } from 'primeng/dropdown';
 export class LoginComponent {
   loginForm: FormGroup;
   c = false;
+  loginError = '';
 
-  constructor(private formBuilder: FormBuilder){
+  constructor(private formBuilder: FormBuilder, private loginService: LoginService) {
     this.loginForm = this.formBuilder.group({
       email: ['', [Validators.required, Validators.email]],
       password: ['', [Validators.required]],
@@ -21,7 +22,18 @@ export class LoginComponent {
   onSubmit() {
     this.c = true;
     if (this.loginForm.valid) {
-      console.log(this.loginForm.value)
+      this.loginService.login(this.loginForm.value).subscribe(
+        (rep: any) => {
+          if (rep.status) {
+            console.log("logged in successfully");
+          } else {
+            this.loginError = "email or password is invalid";
+          }
+        },
+        (error) => {
+          console.log("An error occurred:", error);
+        }
+      );
     }
   }
 }
