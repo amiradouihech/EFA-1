@@ -1,11 +1,11 @@
-package com.example.efabackend.service.impl;
+package com.example.efabackend.service;
 import com.example.efabackend.Dto.LoginDto;
 import com.example.efabackend.Dto.RegisterDto;
 import com.example.efabackend.Repo.userRepo;
 import com.example.efabackend.entity.User;
 import com.example.efabackend.response.LoginResponse;
 import com.example.efabackend.response.RegisterResponse;
-import com.example.efabackend.service.userService;
+import com.example.efabackend.service.impl.userService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
