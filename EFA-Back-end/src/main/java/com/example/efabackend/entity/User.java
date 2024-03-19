@@ -23,6 +23,7 @@ public class User {
     @Column(name = "role",length = 255)
     private String role;
 
+
     public User(long id, String email, String password, String name, String role) {
         this.id = id;
         this.email = email;
